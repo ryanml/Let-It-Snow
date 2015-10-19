@@ -1,11 +1,15 @@
 onload = function () {
   canvasPane = document.createElement("canvas");
   
-  canvasPane.width = document.body.clientWidth;
-  canvasPane.height = document.body.clientHeight;
+  canvasPane.width = screen.width;
+  canvasPane.height = screen.height;
   canvasPane.style = "position:fixed;left:0px;top:0px;z-index:100;pointer-events:none";
   canvasPane.id = "xmas-canvas";
 
+  context = canvasPane.getContext("2d");
+  context.globalCompositeOperation = "destination-over";
+  context.fillStyle = "#ffffff";
+  
   var firstBodyElement = document.body.childNodes[0];
   document.body.insertBefore(canvasPane, firstBodyElement);
   
@@ -24,11 +28,13 @@ onload = function () {
     xOffset += 15;
   }
   
-  context = canvasPane.getContext("2d");
-  context.globalCompositeOperation = "destination-over";
-  context.fillStyle = "#ffffff";
-  
   drawFlakes();
+}
+
+onresize = function () {
+  canvasPane.width = screen.width;
+  canvasPane.height = screen.height;
+  context.fillStyle = "#ffffff";
 }
 
 function drawFlakes() {
