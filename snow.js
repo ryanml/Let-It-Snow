@@ -56,7 +56,13 @@ function updateFlakes () {
       movementX *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
       var movementY = Math.floor(Math.random() * 30) + 5;
     
-      flakes[y].x += movementX;
+      var temp = (flakes[y].x += movementX);
+      if (temp < 0 || temp > screen.width) {
+        flakes[y].x = Math.floor(Math.random() * screen.width) + 0;
+      }
+      else {
+        flakes[y].x = temp;
+      }
       flakes[y].y += movementY;
     }
   }
