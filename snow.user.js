@@ -1,3 +1,12 @@
+// ==UserScript==
+// @name        Let It Snow
+// @namespace   https://github.com/ryanml
+// @description Adds a canvas overlay of pixel snow
+// @include     *
+// @version     1
+// @grant       none
+// ==/UserScript==
+
 onload = function () {
   canvasPane = document.createElement("canvas");
   
